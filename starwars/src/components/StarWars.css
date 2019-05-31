@@ -1,0 +1,25 @@
+.starwars-charlist {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.starwars-charlist .starwar-char {
+  border: 2px solid white;
+  color: white;
+  background: rgb(0, 0, 0, 0.3);
+  font-size: 1.3rem;
+  font-family: "Courier New", Courier, monospace;
+  width: 49%;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 15px 17px 0px -8px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 15px 17px 0px -8px rgba(0, 0, 0, 0.51);
+  box-shadow: 15px 17px 0px -8px rgba(0, 0, 0, 0.51);
+}
+
+.starwars-charlist .starwar-char:hover {
+  cursor: pointer;
+}
