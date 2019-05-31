@@ -20,6 +20,23 @@
   box-shadow: 15px 17px 0px -8px rgba(0, 0, 0, 0.51);
 }
 
+.starwars-charlist .starwar-char .details {
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+}
+
+.starwars-charlist .starwar-char .expand {
+  max-height: 200px;
+  transition: all 0.35s ease-in-out;
+}
+
+.starwars-charlist .starwar-char .details h3 {
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  margin: 5px;
+}
+
 .starwars-charlist .starwar-char:hover {
   cursor: pointer;
 }
