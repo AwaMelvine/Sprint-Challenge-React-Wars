@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import StarwarsCharList from "./components/StarWarsCharList";
+import Pagination from "./components/Pagination";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      next: null,
+      previous: null
     };
   }
 
@@ -14,18 +17,28 @@ class App extends Component {
     this.getCharacters("https://swapi.co/api/people/");
   }
 
+  nextPage = () => {
+    console.log(this.state.next);
+    this.getCharacters(this.state.next);
+  };
+
+  previousPage = () => {
+    this.getCharacters(this.state.previous);
+  };
+
   getCharacters = URL => {
     fetch(URL)
       .then(res => {
         return res.json();
       })
       .then(data => {
+        const { next, previous } = data;
+
         const chars = data.results.map(char => ({
           ...char,
-          expand: false,
-          id: Date.now()
+          expand: false
         }));
-        this.setState({ starwarsChars: chars });
+        this.setState({ ...this.state, next, previous, starwarsChars: chars });
       })
       .catch(err => {
         throw new Error(err);
@@ -46,7 +59,7 @@ class App extends Component {
   };
 
   render() {
-    const { starwarsChars } = this.state;
+    const { starwarsChars, next, previous } = this.state;
 
     return (
       <div className="App">
@@ -55,6 +68,13 @@ class App extends Component {
           <StarwarsCharList
             starwarsChars={starwarsChars}
             expandDetails={this.expandDetails}
+          />
+
+          <Pagination
+            nextPage={this.nextPage}
+            previousPage={this.previousPage}
+            previous={previous}
+            next={next}
           />
         </div>
       </div>
