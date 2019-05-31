@@ -1,5 +1,6 @@
 import React from "react";
 import "./StarWars.css";
+import StarWarsChar from "./StarWarsChar";
 
 const StarWarsCharList = ({ starwarsChars }) => (
   <div className="starwars-charlist">
@@ -8,3 +9,5 @@ const StarWarsCharList = ({ starwarsChars }) => (
     ))}
   </div>
 );
+
+export default StarWarsCharList;
